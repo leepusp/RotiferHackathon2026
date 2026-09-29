@@ -1,0 +1,27 @@
+---
+title: "Big Paper BR"
+author:
+  - name: Person One
+  - name: Person Two
+
+bibliography: 
+    - ../common.bib
+    - ycao.bib
+
+format:
+  html:
+    toc: true
+
+  pdf:
+    documentclass: article
+    keep-tex: true
+---
+
+{{< include _sections/_introduction.qmd >}}
+
+{{< include _sections/_methods.qmd >}}
+
+{{< include _sections/_results.qmd >}}
+
+{{< include _sections/_discussion.qmd >}}
+

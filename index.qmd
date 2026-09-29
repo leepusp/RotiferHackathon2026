@@ -1,0 +1,45 @@
+# ROTIFER Hackaton2026
+
+This is the Git repository for using Rotifer and getting analysis done!
+
+This comes from the agile meetings that we are scheduling at Tuesdays
+
+----------------------------------------
+
+This repository also works as a showcase of Quarto capabilities!
+
+If you never used Quarto, do not fear! It's quite simple
+
+Quarto allows us to create an html navigation and switch from that to a pdf with the change of a \_quarto.yml file!
+
+It also lets us coordinate references and even execute code!
+
+## Repository map
+
+I, Malu, thought of this organization for starters:
+
+``` bash
+.
+├── getting_started
+│   └── Rationale.qmd
+├── Marcos
+│   ├── Analysis
+│   ├── Background
+│   └── Paper
+├── Rafaela
+│   ├── Analysis
+│   ├── Background
+│   └── Paper
+├── index.qmd
+└── _quarto.yml
+```
+
+Where **gettin_started** will store our basics on Rotifer utilization. This can help Vinicius on setting up documentation/examples and future us if we ever need a refresher on how to import stuff on Rotifer
+
+The named folders share the structure where:
+
+**Analysis** - here I would do a day-divided files that would be my logs, this is the folder where stuff is allowed to go wrong (but it doesn't hurt to be organized here, it would get us closer to pick apart what actually belongs on a supplementary file of methods)
+
+**Bacground** - here is the stuff we need to know about our protein, we could divide it on papers or progressively write a literature review, I don't know, we need to settle this
+
+**Paper** - here is where we will create the .qmd files that will feed our pdf

@@ -1,0 +1,19 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "ROTIFER Hackaton2026"
+  sidebar:
+    style: docked
+    search: true
+    contents: auto
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    code-fold: true
+    code-tools: true
+
+bibliography: common.bib
