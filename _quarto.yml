@@ -15,5 +15,3 @@ format:
     toc: true
     code-fold: true
     code-tools: true
-
-bibliography: common.bib

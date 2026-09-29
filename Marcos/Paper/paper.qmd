@@ -4,7 +4,6 @@ author:
   - name: Person One
   - name: Person Two
 
-
 format:
   html:
     toc: true
@@ -21,4 +20,3 @@ format:
 {{< include _sections/_results.qmd >}}
 
 {{< include _sections/_discussion.qmd >}}
-
