@@ -43,3 +43,9 @@ The named folders share the structure where:
 **Bacground** - here is the stuff we need to know about our protein, we could divide it on papers or progressively write a literature review, I don't know, we need to settle this
 
 **Paper** - here is where we will create the .qmd files that will feed our pdf
+
+We can render it as a website by doing quarto preview on the terminal once inside the folder where _quarto.yml resides
+
+This preview also lets us embed molstar sessions, however, it breaks if we ask it to create an html 😔
+
+As the references do not exist yet I removed them from the yaml formatter (quarto preview crashes if you tell it to look for a file that's not there), but should be easy to set up 
