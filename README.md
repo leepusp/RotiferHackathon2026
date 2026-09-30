@@ -31,9 +31,12 @@ https://gamma.app/docs/Git-GitHub-rzcm2bzmbz151mz?mode=doc
 
 ## Roadmap
 
-1. Doccument current version and publish #This Year!
-2. Refactoring and publication of the second version
-3. Easy to use interfaces (web, GUI, TUI) 
+```mermaid
+flowchart TD
+    A[Doccument current version and publish] --> B[Refactoring and publication of the second version]
+    B --> C[Easy to use interfaces]
+```
+
 
 
 ## Interesting links
