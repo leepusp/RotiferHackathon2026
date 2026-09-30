@@ -24,7 +24,13 @@ https://gamma.app/docs/Git-GitHub-rzcm2bzmbz151mz?mode=doc
   - Coordinate with rotifer development
     - **BRANCHES**
     - Coordinate where code will be stored -> **avoid duplications**// **avoid hardcoding** ¹
-- Current target: T4SS
+- Current target: ==T4SS==
   - Help wanted!
 
 ¹ Ensure good design decisions, so we don't create bugs and our modularity is wel maintained
+
+## Roadmap
+
+1. Doccument current version and publish #This Year!
+2. Refactoring and publication of the second version
+3. Easy to use interfaces (web, GUI, TUI) 
