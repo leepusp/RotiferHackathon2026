@@ -34,3 +34,8 @@ https://gamma.app/docs/Git-GitHub-rzcm2bzmbz151mz?mode=doc
 1. Doccument current version and publish #This Year!
 2. Refactoring and publication of the second version
 3. Easy to use interfaces (web, GUI, TUI) 
+
+
+## Interesting links
+
+1. https://github.com/Sam-Sims/salti (Terminal visualizer)
