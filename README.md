@@ -10,3 +10,21 @@ This repository's aim is to build basic teaching material for protein sequence, 
 
 Basics command 
 https://gamma.app/docs/Git-GitHub-rzcm2bzmbz151mz?mode=doc
+
+
+## Bullet points
+
+- Hackaton will become a published tutorial 
+- During it, procedures will be adjusted
+  - HMM construction
+  - Storage of HMMs on rotifer_data
+  - Genomic context
+  - Structural algorithms
+  - Data presentation: Viz!
+  - Coordinate with rotifer development
+    - **BRANCHES**
+    - Coordinate where code will be stored -> **avoid duplications**// **avoid hardcoding** ¹
+- Current target: T4SS
+  - Help wanted!
+
+¹ Ensure good design decisions, so we don't create bugs and our modularity is wel maintained
