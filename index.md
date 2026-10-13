@@ -6,6 +6,31 @@ This comes from the agile meetings that we are scheduling at Tuesdays
 
 ----------------------------------------
 
+Revamping the index
+
+all note files will be handled with the extension .md (makrdown)
+
+I removed the named directories, as we are now going to organize ourselves into the proteins we will be exploring
+
+I also created a doc folder with a place-holder .md
+
+There we can structure the paper and/or tutorial examples when we have them
+
+
+
+--------------------------------------------
+
+
+
+
+
+
+
+
+
+## Deprecated
+
+
 This repository also works as a showcase of Quarto capabilities!
 
 If you never used Quarto, do not fear! It's quite simple
