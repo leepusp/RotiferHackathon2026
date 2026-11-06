@@ -1205,3 +1205,144 @@ cagE['psi1seqs'].df.query('id == "UniRef50_Q48252"')[['c80i70','c80i50','c80i30'
 cagE['psi1seqs'].df.c80i70.value_counts()
 get_ipython().run_line_magic('page', '')
 cagE['psi1'][0].head()
+cagE['psi1seqs'].to_hist()
+import numpy as np
+import matplotlib.pyplot as plt
+
+fig, axes = plt.subplots(1, 3, figsize=(15, 4))
+
+cagE["psi1"][0].evalue.apply(
+    lambda x: -np.log10(max(x, 1e-300))
+).hist(ax=axes[0], bins=30)
+
+cagE["psi1"][0].bitscore.hist(ax=axes[1], bins=30)
+cagE["psi1"][0].length.hist(ax=axes[2], bins=30)
+
+for ax, title in zip(axes, ["-log10(E-value)", "Bit score", "Alignment length"]):
+    ax.set_title(title)
+    ax.set_xlabel(title)
+    ax.set_ylabel("Frequency")
+
+fig.text(
+    0.99, 0.99,
+    f"Unique hits: {cagE['psi1'][0].hit.nunique()}",
+    ha="right", va="top", fontsize=11
+)
+
+plt.tight_layout()
+plt.show()
+cagE['psi1'][0].head()
+cagE['psi1seqs'].df.query('id == "UniRef50_Q48252"')
+cagE['psi1'][0].sort_values(['iteration','evalue','bitscore'], ascending=[True,True,False]).head()
+cagE['psi1seqs'].df.eval(f'a = id.isin({["UniRef50_Q48252"]})').groupby(['c80i30','c0i0']).agg(q=('a','any'), **{ x:(x,'nunique') for x in (['hit','c100i100','c80i70','c80i50']) })
+cagE['psi1seqs'].df.eval(f'a = id.isin({["UniRef50_Q48252"]})').groupby(['c80i30','c0i0']).agg(q=('a','any'), **{ x:(x,'nunique') for x in (['id','c100i100','c80i70','c80i50']) })
+cagE['psi1seqs'].df.eval(f'a = id.isin({["UniRef50_Q48252"]})').groupby(['c80i30','c0i0']).agg(q=('a','any'), **{ x:(x,'nunique') for x in (['id','c100i100','c80i70','c80i50']) }).sort_values(reversed(['id','c100i100','c80i70','c80i50']))
+cagE['psi1seqs'].df.eval(f'a = id.isin({["UniRef50_Q48252"]})').groupby(['c80i30','c0i0']).agg(q=('a','any'), **{ x:(x,'nunique') for x in (['id','c100i100','c80i70','c80i50']) }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50'])))
+get_ipython().run_line_magic('page', '')
+cagE['psi1seqs'].filter('c0i0 == "UniRef50_A0A6P2RT67"').align()._view_sequence()
+cagE['psi1seqs'].df.eval(f'a = id.isin({["UniRef50_Q48252"]})').groupby(['c80i30','c0i0']).agg(q=('a','any'), **{ x:(x,'nunique') for x in (['id','c100i100','c80i70','c80i50']) }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50'])))
+get_ipython().run_line_magic('page', '')
+cagE['psi1seqs'].df.nunique()
+cagE['psi1seqs'].filter(f'id == c30i0').align()._view_sequence()
+cagE['psi1seqs'].filter(f'id == c80i30').align()._view_sequence()
+cagE['psi1seqs'].filter(f'id == c80i30').to_hist()
+cagE['psi1seqs'].filter(f'id == c80i30', maxlen=2000, minlen=600).to_hist()
+cagE['psi1seqs'].filter(f'id == c80i30', maxlen=1500, minlen=600).to_hist()
+cagE['psi1seqs'].df['evalue'] = cagE['psi1seqs'].df.id.map(cagE['psi1'][0].set_index('hit').evalue)
+cagE['psi1seqs'].df['evalue'] = cagE['psi1seqs'].df.id.map(cagE['psi1'][0].sort_values(['evalue']).drop_duplicates().set_index('hit').evalue)
+cagE['psi1seqs'].df['evalue'] = cagE['psi1seqs'].df.id.map(cagE['psi1'][0].sort_values(['evalue']).drop_duplicates('hit').set_index('hit').evalue)
+cagE['psi1seqs'].sort(['evalue'], inplace=True)
+cagE['psi1seqs']._view_sequence()
+cagE['psi1'][0]
+get_ipython().run_line_magic('page', '')
+cagE['psi1pfam'] = riu.architecture(rdbh.hmmscan(cagE['psi1seqs'], models_path="/scratch/global/databases/pfam/Pfam-A.hmm").filter('evalue <= 0.1'), **riu.config)
+cagE['psi1pfam'] = riu.architecture(rdbh.hmmscan(cagE['psi1seqs'], models_path="/scratch/global/databases/pfam/Pfam-A.hmm").query('c_evalue <= 0.1'), **riu.config)
+cagE['psi1pfam'] = riu.architecture(rdbh.hmmscan(cagE['psi1seqs'], models_path="/scratch/global/databases/pfam/Pfam-A.hmm").query('c_evalue <= 0.1'), **riu.config['hmmer'])
+cagE['psi1pfam']
+get_ipython().run_line_magic('page', '')
+rdag
+cagE['psi1hs'] = rdbh.hmmscan(cagE['psi1seqs'], models_path="/scratch/global/databases/pfam/Pfam-A.hmm")
+cagE['psi1hs'].head()
+cagE['psi1hs'].model.value_counts()
+get_ipython().run_line_magic('page', '')
+cagE['psi1'].hit.nunique()
+cagE['psi1'][0].hit.nunique()
+cagE['psi1hs'].model.value_counts()
+get_ipython().run_line_magic('page', '')
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'] = riu.filter_nonoverlapping_regions(cagE['psi1hs'], **riu.config['hmmer'])
+cagE['psi1hsno'].model.value_counts()
+get_ipython().run_line_magic('page', '')
+cagE['psi1'][0].hit.nunique()
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'].model.value_counts()
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'].query('model != "P-loop_TraG"')
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'].query('evalue <= 1 and model != "P-loop_TraG"')
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'][~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)]
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'][~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence) & cagE['psi1hsno'].sequence.isin(cagE['psi1'].query('evalue <= 0.1').hit)]
+cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)]
+get_ipython().run_line_magic('page', '')
+get_ipython().run_line_magic('page', '')
+cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates()
+cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().nunique()
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','any'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] })
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','any'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50','c80i30'])))
+cagE['psi1'][0].head()
+cagE['psi1seqs'].df.query('id == "UniRef50_Q48252"').c80i0
+cagE['psi1seqs'].df.query('id == "UniRef50_Q48252"').c0i0
+cagE['psi1seqs'].df.query('id == "UniRef50_Q48252"').c80i30
+cagE['psi1seqs'].df.query('id == "UniRef50_J0J980"').c80i30
+cagE['psi1seqs'].df.query('id == "UniRef50_J0J980"').c0i0
+cagE['psi1seqs'].df.query('id == "UniRef50_J0J980"').c80i30
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','any'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50','c80i30'])))
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','sum'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50','c80i30'])))
+cagE['psi1seqs'].filter('c0i0 == "UniRef50_A0A2A2K1R1" and id == c80i50').align()._view_sequence()
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','sum'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50','c80i30'])))
+cagE['psi1seqs'].filter('c0i0 == "UniRef50_A0A8T3YM87" and id == c80i50').align()._view_sequence()
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','sum'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50','c80i30'])))
+gnc = ncbi.GeneNeighborhoodCursor(mirror="/scratch/global/databases/genomes")
+mc
+mc = uniprot.MappingCursor()
+mc["UniRef50_A0A0R3Q3Q1"]
+mc = uniprot.MappingCursor(host="davinci")
+mc["UniRef50_A0A0R3Q3Q1"]
+cagE['psi1seqs'].df.assign(pfp=cagE['psi1seqs'].df.id.isin(cagE['psi1hsno'][(~cagE['psi1hsno'].sequence.isin(cagE['psi1hsno'].query('model == "P-loop_TraG"').sequence)) & cagE['psi1hsno'].sequence.isin(cagE['psi1'][0].query('evalue <= 0.1').hit)].sequence.drop_duplicates().tolist())).groupby('c0i0').agg(pfp=('pfp','sum'), **{ x:(x,'nunique') for x in ['id','c100i100','c80i70','c80i50','c80i30'] }).sort_values(list(reversed(['id','c100i100','c80i70','c80i50','c80i30'])))
+mc["T1BDM8"]
+cagE['psi1'][0].head()
+mc["Q48252"]
+get_ipython().run_line_magic('pinfo2', 'mc.fetchall')
+cagE['psi1u2n'] = mc.fetchall(cagE['psi1'][0].hit.drop_duplicates().tolist(), source="UniRef50", target=["RefSeq","EMBL-CDS"])
+cagE['psi1u2n'].head()
+cagE['psi1u2n']
+mc.missing
+get_ipython().run_line_magic('page', '')
+mc["UPI00313314C7"]
+mc.cursors['webapi["UPI00313314C7"]
+mc.cursors['webapi']["UPI00313314C7"]
+mc.cursors['webapi'].fetchall(["UPI00313314C7"], source="UniParc")
+mc.cursors['webapi'].fetchall(["UPI00313314C7"], source="Proteomes")
+mc.cursors['webapi'].fetchall(["UPI00313314C7"], source="Uniprot-KB")
+mc.cursors['webapi'].fetchall(["UPI00313314C7"], source="UniParc")
+mc.cursors['webapi'].fetchall(["UPI00313314C7"], source="UniParc", target="RefSeq")
+fc
+fc = uniprot.FastaCursor(local_fasta_path="/scratch/global/databases/fadb/uniprot/uniref50")
+fc["UniRef50_UPI00313314C7"]
+mc.cursors['clickhouse'].client
+help(mc.cursors['clickhouse'].client)
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM idmapping LIMIT 3")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM uniprot.idmapping LIMIT 3")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping LIMIT 3")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id == 'UPI00313314C7'")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id == 'UniRef50_UPI00313314C7'")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id = 'UniRef50_UPI00313314C7'")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id like '%UPI00313314C7%'")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id like '%UPI0%'")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping LIMIT 3")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id_type == 'UniParc'")
+mc.cursors['clickhouse'].client.query_df("SELECT * FROM rotifer.idmapping WHERE id_type = 'UniParc'")
+rdbs.sequence(["WP_000496009.1"], local_database_path=os.path.join(rotifer.config["data"],"fadb","nr","nr")))
+rdbs.sequence(["WP_000496009.1"], local_database_path=os.path.join(rotifer.config["data"],"fadb","nr","nr"))
