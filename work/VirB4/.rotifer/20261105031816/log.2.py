@@ -374,3 +374,194 @@ cagE["ATPaseenv"].df.groupby('c80i50')['phylum'].value_counts()
 get_ipython().run_line_magic('page', '')
 cagE["ATPaseenv"].df.groupby(['c0i0','kingdom']).id.nunique()
 cagE['ATPaseenv'].df.groupby('c0i0').c80i50.nunique()
+cagE["ATPaseenv"].df.groupby('phylun')['c80i50'].value_counts()
+cagE["ATPaseenv"].df.groupby('phylum')['c80i50'].value_counts()
+cagE["ATPaseenv"].df.groupby('c80i50')['phylum'].value_counts().head(15)
+cagE["ATPaseenv"].df.groupby(['c0i0','kingdom']).id.nunique()
+cagE["ATPaseenv"].df.groupby(['c80i50','kingdom']).id.nunique()
+cagE["ATPaseenv"].df.groupby(['c80i50','phylum']).id.nunique()
+cagE["ATPaseenv"].df.groupby(['c0i0','phylum']).id.nunique()
+cagE['ATPaseenv'].df[['id','superkingdom','kindgdom','phylum','c80i70','c80i50','c80i30','c0i0']].to_csv('meta)fortree.tsv',sep="\t",index=False)
+cagE['ATPaseenv'].df[['id','superkingdom','kingdom','phylum','c80i70','c80i50','c80i30','c0i0']].to_csv('meta)fortree.tsv',sep="\t",index=False)
+cagE['ATPaseenv'].df[['id','superkingdom','kingdom','phylum','c80i70','c80i50','c80i30','c0i0']].to_csv('meta_fortree.tsv',sep="\t",index=False)
+cagE['ATPaseenv'].df.c80i50.value_counts().head(7)
+cagE['ATPaseenv'].df.c80i70.value_counts().head(7)
+cagE['ATPaseenv'].df.c80i30.value_counts().head(7)
+cagE['ATPaseenv'].df.c80i30.value_counts().head(7).sum()
+cagE['ATPaseenv'].df['motif_ok'] = (cagE['ATPaseenv'].df.sequence.str[20] != '-') & (cagE['ATPaseenv'].df.sequence.str[1321] != '-')
+cagE['ATPaseenv'].df['motif_ok'].value_counts()
+cagE['ATPaseenv'].df.groupby('motif_ok').c0i0.value_counts()
+cagE['ATPaseenv'].df.groupby('motif_ok').c0i0.value_counts(normalize=True)
+cagE['ATPaseenv'].df.groupby('c0i0').motif_ok.valuue_counts(normalize=True)
+cagE['ATPaseenv'].df.groupby('c0i0').motif_ok.value_counts(normalize=True)
+cagE['ATPaseenv'].df.groupby('c80i30').motif_ok.value_counts(normalize=True)
+cagE['ATPaseenv'].df.groupby('c80i30').motif_ok.value_counts()
+cagE['ATPaseenv'].df['evalue'] = cagE['ATPaseenv'].df.id.map(cagE['Atpasepsi1'].drop_duplicates('hit').set_index('hit').evalue)
+cagE['ATPaseenv'].df['evalue'] = cagE['ATPaseenv'].df.id.map(cagE['Atpasepsi1'][0].drop_duplicates('hit').set_index('hit').evalue)
+cagE['ATPaseenv'].df[['id','evalue','motif_ok','superkingdom','kingdom','phylum','c80i70','c80i50','c80i30','c0i0']].to_csv('meta_fortree.tsv',sep="\t",index=False)
+cagE['ATPaseenv'].df.groupby('phylum').motif_ok.value_counts(normalize=True)
+cagE['ATPaseenv'].df.groupby('phylum').motif_ok.value_counts()
+for col in ['c80i70', 'c80i50', 'c80i30']:
+    print(f"\n{col}")
+    print(atp.df[col].value_counts().describe())
+for col in ['c80i70', 'c80i50', 'c80i30']:
+    print(f"\n{col}")
+    print(cagE['ATPaseenv'].df[col].value_counts().describe())
+for col in ['c0i0','c80i70', 'c80i50', 'c80i30']:
+    print(f"\n{col}")
+    print(cagE['ATPaseenv'].df[col].value_counts().describe())
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').slice((8,1456)).filter('id == "c80i30"').sort(['c80i50','c80i70']).align()._view_sequences()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').slice((8,1456)).filter('id == "c80i30"').sort(['c80i50','c80i70']).align()._view_sequence()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').slice((8,1456)).filter('id == "c80i30"').align()._view_sequence()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').slice((8,1456)).filter('id == "c80i30"').align()._view_sequence()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')._view_sequence()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == "c80i30"').slice((8,1456)).align()._view_sequence()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i30').slice((8,1456)).align()._view_sequence()
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i50').slice((8,1456)).align()._view_sequence()
+# We are going to check if taking one of each of c80i50 after removing the sequences that are kills our diversity
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i50').slice((8,1456)).align().df[[col]].value_counts().describe())
+# We are going to check if taking one of each of c80i50 after removing the sequences that are kills our diversity
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i50').slice((8,1456)).align().df[[col]].value_counts().describe()
+cols = ['c80i70', 'c80i50', 'c80i30', 'phylum']
+
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i50').slice((8,1456)).align().df[cols].apply(lambda s: s.value_counts().describe())
+cols = ['c80i70', 'c80i50', 'c80i30','c0i0', 'phylum']
+
+cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i50').slice((8,1456)).align().df[cols].apply(lambda s: s.value_counts().describe())
+pd.DataFrame({
+        'before': cagE['ATPaseenv'].df[cols].nunique(),
+        'after': (
+            cagE['ATPaseenv']
+            .filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')
+            .filter('id == c80i50')
+            .slice((8,1456))
+            .align()
+            .df[cols]
+            .nunique()
+        )
+    })
+    .assign(
+        lost=lambda d: d['before'] - d['after'],
+        retained_pct=lambda d: 100 * d['after'] / d['before']
+    )
+    .round(2)
+)
+(
+    pd.DataFrame({
+        'before': cagE['ATPaseenv'].df[cols].nunique(),
+        'after': (
+            cagE['ATPaseenv']
+            .filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')
+            .filter('id == c80i50')
+            .slice((8,1456))
+            .align()
+            .df[cols]
+            .nunique()
+        )
+    })
+    .assign(
+        lost=lambda d: d['before'] - d['after'],
+        retained_pct=lambda d: 100 * d['after'] / d['before']
+    )
+    .round(2)
+)
+import pandas as pd
+(
+    pd.DataFrame({
+        'before': cagE['ATPaseenv'].df[cols].nunique(),
+        'after': (
+            cagE['ATPaseenv']
+            .filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')
+            .filter('id == c80i50')
+            .slice((8,1456))
+            .align()
+            .df[cols]
+            .nunique()
+        )
+    })
+    .assign(
+        lost=lambda d: d['before'] - d['after'],
+        retained_pct=lambda d: 100 * d['after'] / d['before']
+    )
+    .round(2)
+)
+import pandas as pd
+(
+    pd.DataFrame({
+        'before': cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').df[cols].nunique(),
+        'after': (
+            cagE['ATPaseenv']
+            .filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')
+            .filter('id == c80i50')
+            .slice((8,1456))
+            .align()
+            .df[cols]
+            .nunique()
+        )
+    })
+    .assign(
+        lost=lambda d: d['before'] - d['after'],
+        retained_pct=lambda d: 100 * d['after'] / d['before']
+    )
+    .round(2)
+)
+import pandas as pd
+(
+    pd.DataFrame({
+        'before': cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').df[cols].nunique(),
+        'after': (
+            cagE['ATPaseenv']
+            .filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')
+            .filter('id == c80i50')
+            .slice((8,1456))
+            .df[cols]
+            .nunique()
+        )
+    })
+    .assign(
+        lost=lambda d: d['before'] - d['after'],
+        retained_pct=lambda d: 100 * d['after'] / d['before']
+    )
+    .round(2)
+)
+cagE['it1atpsel'] = cagE['ATPaseenv'].filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').filter('id == c80i50').slice((8,1456)).align()
+cagE['ATPaseenv']
+cagE['ATPaseenv'].filter('id != cagE["it1atpsel"].id.tolist()')._view_sequence()
+cagE['ATPaseenv'].filter( f'id not in {cagE["it1atpsel"].id.tolist()}')._view_sequence()
+cagE['ATPaseenv'].filter( f'id not in {cagE["it1atpsel"].df.id.tolist()}')._view_sequence()
+cagE['ATPaseenv'].filter( f'id not in {cagE["it1atpsel"].df.id.tolist()}')sort([20])._view_sequence()
+cagE['ATPaseenv'].filter( f'id not in {cagE["it1atpsel"].df.id.tolist()}').sort([20])._view_sequence()
+cagE['ATPaseenv'].df.sequence.str[15:20].head(3)
+cagE['ATPaseenv'].df.sequence.str[15:25].head(3)
+cagE['ATPaseenv'].df.sequence.str[10:30].head(3)
+cagE['ATPaseenv'].df.sequence.str[14:30].head(3)
+cagE['ATPaseenv'].df.sequence.str[20:30].head(3)
+cagE['ATPaseenv'].filter( f'id not in {cagE["it1atpsel"].df.id.tolist()}').sort([20])._view_sequence()
+cagE['ATPaseenv'].filter( f'id not in {cagE["it1atpsel"].df.id.tolist()}').sort([21])._view_sequence()
+cagE['ATPaseenv'].filter(f'c80i50 not in {cagE["it1atpsel"].df.c80i50.dropna().unique().tolist()}').filter('sequence.str[20] != "-" and sequence.str[1321] != "-"')._view_sequence()
+# Let's recover what's lost and check it
+temp = cagE['ATPaseenv'].filter(f'c80i50 not in {cagE["it1atpsel"].df.c80i50.dropna().unique().tolist()}').filter('sequence.str[20] != "-" and sequence.str[1321] != "-"').sort(['evalue'])
+
+temp = temp.filter(f'id in {temp.df.groupby("c80i50", sort=False).head(1).id.tolist()}')
+temp._view_sequence()
+cagE['ATPaseenv'].df.query('c0i50 == "UniRef50_A0A485BXW6"')
+cagE['ATPaseenv'].df.query('c80i50 == "UniRef50_A0A485BXW6"')
+cagE['ATPaseenv'].df.query('c80i50 == "UniRef50_A0A485BXW6"').id.nunique()
+cagE['ATPaseenv'].df.query('c80i50 == "UniRef50_A0A485BXW6"')._view_sequence()
+cagE['ATPaseenv'].filter('c80i50 == "UniRef50_A0A485BXW6"')._view_sequence()
+temp._view_sequence()
+cagE['ATPaseenv'].filter('c80i50 == "UniRef50_UPI00068EA29C"')._view_sequence()
+temp._view_sequence()
+cagE['ATPaseenv'].filter('c80i50 == "UniRef50_UPI00068EA29C"')._view_sequence()
+cagE['it1atpsel_rescued'] = rdbs.concat([cagE['it1atpsel'],temp]).align()
+cagE['it1atpsel_rescued'].view_sequence()
+cagE['it1atpsel_rescued']._view_sequence()
+cagE['it1atpsel_rescued'].sort([550])._view_sequence()
+cagE['it1atpsel_rescued'].sort([12])._view_sequence()
+cagE['it1atpsel_rescued'].sort([12,15])._view_sequence()
+cagE['it1atpsel_rescued'].sort([12,18])._view_sequence()
+cagE['it1atpsel_rescued'].sort([12,17])._view_sequence()
+cagE['it1atpsel_rescued'].sort([17])._view_sequence()
+cagE['it1atpsel_rescued'].sort([17,'length'])._view_sequence()
+cagE['it1atpsel_rescued'].filter(minlen = 230).sort([17,'length']).align()._view_sequence()
+cagE['it1atpsel_rescued'].filter(minlen = 250).sort([17,'length']).align()._view_sequence()
